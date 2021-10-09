@@ -3,10 +3,11 @@ CC		= gcc
 
 NAME	= libftprintf.a
 INCS	= ./includes/
-SRCS	= ft_printf.c
+SRCS	= ft_printf.c $(addprefix $(SRC_DIR)/, print_char_types.c)
 OBJS	= $(SRCS:.c=.o)
 
-LIB_DIR	= ./srcs/libft
+SRC_DIR	= ./srcs/
+LIB_DIR	= $(SRC_DIR)/libft
 LIB		= $(LIB_DIR)/libft.a
 
 AR		= ar rcs

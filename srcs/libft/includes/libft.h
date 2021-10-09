@@ -4,5 +4,6 @@
 # include <stdlib.h>
 
 size_t	ft_strlen(const char *str);
+int		ft_strchr(const char *s, int c);
 
 #endif
