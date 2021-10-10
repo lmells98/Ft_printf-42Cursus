@@ -3,14 +3,13 @@
 
 int	verify_type(const char **format)
 {
-	char  ch_p;
-	//char	*type;
-	int		ret;
+	char	ch_p;
+	int		type;
 
 	(*format)++;
 	ch_p = (char)**format;
-	ret = ft_strchr("cs%", ch_p);
-	return (ret);
+	type = ft_strchr("dics%", ch_p);
+	return (type);
 }
 
 int	convert_type(const char **format, char type, va_list *arg_p)
@@ -20,6 +19,8 @@ int	convert_type(const char **format, char type, va_list *arg_p)
 	ret = 0;
 	if (ft_strchr("sc", type))
 		ret += print_char_types(type, arg_p);
+	else if (type == 'd')
+		ret += print_nbr_types(type, arg_p);
 	else if (type == '%')
 		ret += print_percent(type);
 	(*format)++;
