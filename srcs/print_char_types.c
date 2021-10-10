@@ -1,13 +1,13 @@
 #include "../includes/ft_printf.h"
 #include "./libft/includes/libft.h"
 
-int	ft_putchar(char c)
+int	print_char(char c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-int	ft_putstr(char *str)
+int	print_str(char *str)
 {
 	if (!str)
 	{
@@ -38,10 +38,10 @@ int	print_char_types(char type, va_list *arg_p)
 	ret = 0;
 	if (ft_strchr("sc", type))
 	{
-		if (type == 's')
-			ret += ft_putstr(va_arg(*arg_p, char *));
-		else if (type == 'c')
-			ret += ft_putchar(va_arg(*arg_p, int));
+		if (type == 'c')
+			ret += print_char(va_arg(*arg_p, int));
+		else if (type == 's')
+			ret += print_str(va_arg(*arg_p, char *));
 	}
 	return (ret);
 }
