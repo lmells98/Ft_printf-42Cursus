@@ -1,20 +1,21 @@
 #include "./includes/ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 int main(void)
 {
 	int ret;
-	char	*test;
+	int	test;
 
 	ret = 0;
-	test = "";
+	test = INT_MIN;
 
 	printf("EO:\n[");
-	ret += printf("%s%%", test);
+	ret += printf("%d", test);
 	printf("] chars = %i\n", ret);
 	printf("AO:\n");
 	write(1, "[", 1);
 	ret = 0;
-	ret += printf("%s%%", test);
+	ret += ft_printf("%d", test);
 	printf("] chars = %i\n", ret);
 }
