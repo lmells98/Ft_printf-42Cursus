@@ -11,11 +11,11 @@ int main(void)
 	test = INT_MIN;
 
 	printf("EO:\n[");
-	ret += printf("%d", test);
+	ret += printf("%i", test);
 	printf("] chars = %i\n", ret);
 	printf("AO:\n");
 	write(1, "[", 1);
 	ret = 0;
-	ret += ft_printf("%d", test);
+	ret += ft_printf("%i", test);
 	printf("] chars = %i\n", ret);
 }
