@@ -9,6 +9,7 @@ int	print_char(char c)
 
 int	print_str(char *str)
 {
+	printf("\nprint_str()...\nstr=%s\n", str);
 	if (!str)
 	{
 		write(1, "(null)", 6);
