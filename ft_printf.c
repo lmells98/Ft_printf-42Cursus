@@ -8,7 +8,7 @@ int	verify_type(const char **format)
 
 	(*format)++;
 	ch_p = (char)**format;
-	type = ft_strchr("csdiu%", ch_p);
+	type = ft_strchr("csdiupxX%", ch_p);
 	return (type);
 }
 
@@ -21,6 +21,8 @@ int	convert_type(const char **format, char type, va_list *arg_p)
 		ret += print_char_types(type, arg_p);
 	else if (ft_strchr("diu", type))
 		ret += print_nbr_types(type, arg_p);
+	else if (ft_strchr("pxX", type))
+		ret += print_hex_types(type, arg_p);
 	else if (type == '%')
 		ret += print_percent(type);
 	(*format)++;
