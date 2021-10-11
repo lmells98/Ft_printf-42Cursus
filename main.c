@@ -8,14 +8,14 @@ int main(void)
 	int	test;
 
 	ret = 0;
-	test = INT_MIN;
+	test = 0;
 
 	printf("EO:\n[");
-	ret += printf("%i", test);
+	ret += printf("%d", test);
 	printf("] chars = %i\n", ret);
 	printf("AO:\n");
 	write(1, "[", 1);
 	ret = 0;
-	ret += ft_printf("%i", test);
+	ret += ft_printf("%d", test);
 	printf("] chars = %i\n", ret);
 }
