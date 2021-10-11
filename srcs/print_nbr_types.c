@@ -1,16 +1,6 @@
 #include "../includes/ft_printf.h"
 #include "./libft/includes/libft.h"
 
-static short	check_is_neg(long int nbr)
-{
-	if (nbr < 0)
-	{
-		return (1);
-	}
-	else
-		return (0);
-}
-
 static int	get_nbr_len(unsigned long int nbr)
 {
 	int	len;
@@ -60,9 +50,12 @@ int	itoa(long int nbr)
 	int		sign;
 
 	ret = 0;
-	sign = check_is_neg(nbr);
-	if (sign)
+	sign = 0;
+	if (nbr < 0)
+	{	
+		sign = 1;
 		nbr *= -1;
+	}
 	ret += print_digits(nbr, sign);
 	return (ret);
 }
