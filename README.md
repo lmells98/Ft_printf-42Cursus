@@ -1,17 +1,17 @@
 # WORK IN PROGRESS...
-Currently working on int type conversions.
+Currently working on hex type conversions.
 
-Passed printfTester ```make percent``` 100% OK!
+- Passed printfTester ```make percent``` 100% OK!
 
-Passed printfTester ```make c``` 100% OK!
+- Passed printfTester ```make c``` 100% OK!
 
-Passed printfTester ```make s``` 100% OK!
+- Passed printfTester ```make s``` 100% OK!
 
-Passed printfTester ```make d``` 100% OK!
+- Passed printfTester ```make d``` 100% OK!
 
-Passed printfTester ```make i``` 100% OK!
+- Passed printfTester ```make i``` 100% OK!
 
-Passed printfTester ```make u``` 100% OK!
+- Passed printfTester ```make u``` 100% OK!
 
 I'll be updating this ```README.md``` as changes are made!
 
@@ -31,7 +31,19 @@ Call the name of the function.
 ```
 The function will print out a formatted string given as the first argument. You can convert a data type to print in the formatted string using multiple arguments.
 The conversion types are specified with a ```"%"``` and the following character being ```"csdiu%"```.
-```"%%"``` allows you to print the percent ```"%"``` character in the formatted string.
+
+- Print Char - ```"%c"``` 
+
+- Print String - ```"%s"``` 
+
+- Print Decimal - ```"%d"``` 
+
+- Print Integer - ```"%i"```
+
+- Print Unsigned - ```"%u"```
+
+- Print Percent - ```"%%"```
+
 ```
   ft_printf("%% %c %s %d %i %u ", 'c', "example", 15254, -42, 0);
 ```
