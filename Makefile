@@ -4,7 +4,7 @@ CC		= gcc
 NAME	= libftprintf.a
 INCS	= ./includes/
 SRCS	= ft_printf.c $(addprefix $(SRC_DIR)/, print_char_types.c \
-		  				print_nbr_types.c print_hex_types.c)
+		  				print_nbr_types.c print_hex_types.c print_signs.c)
 OBJS	= $(SRCS:.c=.o)
 
 SRC_DIR	= ./srcs/
