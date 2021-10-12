@@ -46,11 +46,12 @@ int	convert_hex(char type, unsigned long long value)
 
 	ret = 0;
 	power = 1;
-	if (!value)
+	if (value == 0)
+	{
+		ret += print_char('0');
 		return (ret);
+	}
 	len = get_hex_len(value);
-	if (len == 0)
-		power = 0;
 	while (len > 1)
 	{
 		power *= 16;
@@ -60,24 +61,17 @@ int	convert_hex(char type, unsigned long long value)
 	return (ret);
 }
 
-int	print_hex(char type, unsigned int value)
+int	print_pointer(char type, unsigned long long value)
 {
 	int	ret;
 
 	ret = 0;
-	if (ft_strchr("xX", type))
+	if (!value)
+		ret += print_str("(nil)");
+	else
 	{
-	/*	if (type == 'x')
-		{
-			write(1, "0x", 2);
-			ret += 2;
-		}
-		else if (type == 'X')
-		{
-			write(1, "0X", 2);
-			ret += 2;
-		}
-	*/	ret += convert_hex(type, value);
+		ret += print_sign(type);
+		ret += convert_hex(type, value);
 	}
 	return (ret);
 }
@@ -88,8 +82,8 @@ int	print_hex_types(char type, va_list *arg_p)
 
 	ret = 0;
 	if (ft_strchr("xX", type))
-		ret += print_hex(type, va_arg(*arg_p, unsigned int));
-/*	else if (type == 'p')
-		ret += print_pointer();
-*/	return (ret);
+		ret += convert_hex(type, va_arg(*arg_p, unsigned int));
+	else if (type == 'p')
+		ret += print_pointer(type, (unsigned long long)va_arg(*arg_p, void *));
+	return (ret);
 }
