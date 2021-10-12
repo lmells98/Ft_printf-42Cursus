@@ -9,7 +9,6 @@ int	print_char(char c)
 
 int	print_str(char *str)
 {
-	printf("\nprint_str()...\nstr=%s\n", str);
 	if (!str)
 	{
 		write(1, "(null)", 6);
@@ -17,19 +16,6 @@ int	print_str(char *str)
 	}
 	ft_putstr(str);
 	return (ft_strlen(str));
-}
-
-int	print_percent(char type)
-{
-	int	ret;
-
-	ret = 0;
-	if (type == '%')
-	{
-		write(1, "%", 1);
-		ret += 1;
-	}
-	return (ret);
 }
 
 int	print_char_types(char type, va_list *arg_p)
