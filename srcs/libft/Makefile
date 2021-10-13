@@ -3,7 +3,7 @@ CC		= gcc
 
 NAME	= libft.a
 INCS	= ./includes/.
-SRCS	= ft_strlen.c ft_strchr.c ft_putstr.c
+SRCS	= ft_strlen.c ft_strchr.c ft_putstr.c ft_itoa.c
 OBJS	= $(SRCS:.c=.o)
 
 AR		= ar rcs
