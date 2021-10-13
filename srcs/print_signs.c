@@ -16,9 +16,7 @@ int	print_sign(char type)
 	int	ret;
 
 	ret = 0;
-	if (ft_strchr("px", type))
+	if (ft_strchr("p", type))
 		ret += print_str("0x");
-	else if (type == 'X')
-		ret += print_str("0X");
 	return (ret);
 }
