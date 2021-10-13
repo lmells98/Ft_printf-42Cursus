@@ -66,13 +66,8 @@ int	print_pointer(char type, unsigned long long value)
 	int	ret;
 
 	ret = 0;
-	if (!value)
-		ret += print_str("(nil)");
-	else
-	{
-		ret += print_sign(type);
-		ret += convert_hex(type, value);
-	}
+	ret += print_sign(type);
+	ret += convert_hex(type, value);
 	return (ret);
 }
 
