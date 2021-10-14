@@ -1,10 +1,12 @@
-# ft_printf project 42_Cursus
+# Ft_printf Project 42_Cursus
 
 Because putnbr and putstr aren't enough!
 
 For this project, we are given the task to recode our own printf function.
 The mandatory requirement is that we handle the type conversions that proceed a ```"%"``` in the string given as the first argument.
 This introduced me to variadic arguments. It has also helped me in learning how to link multiple files in different directories while maintaining easy to read code.
+
+<img width="949" alt="Screen Shot 2021-10-14 at 12 44 15 PM" src="https://user-images.githubusercontent.com/86273901/137239164-481ec9c0-ce1c-4a07-92b5-e7db657a9883.png">
 
 # Testing...
 
