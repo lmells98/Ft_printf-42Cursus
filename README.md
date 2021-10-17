@@ -15,7 +15,7 @@ Call the name of the function.
   ft_printf()
 ```
 The function will print out a formatted string given as the first argument. You can convert a data type to print in the formatted string using multiple arguments.
-The conversion types are specified with a ```"%"``` and the following character being ```"csdiu%"```.
+The conversion types are specified with a ```"%"``` and the following character being ```"csdiupxX%"```.
 
 - Print Char - ```"%c"``` 
 
