@@ -8,11 +8,6 @@ This introduced me to variadic arguments. It has also helped me in learning how 
 
 <img width="949" alt="Screen Shot 2021-10-14 at 12 44 15 PM" src="https://user-images.githubusercontent.com/86273901/137239164-481ec9c0-ce1c-4a07-92b5-e7db657a9883.png">
 
-# Testing...
-
-My function passes all of the mandatory tests provided by printfTester.
-Run ```make m``` in ```./printfTester``` to execute the tests.
-
 # How to use
 
 Call the name of the function.
