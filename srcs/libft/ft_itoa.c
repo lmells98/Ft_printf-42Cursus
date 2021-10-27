@@ -1,54 +1,63 @@
-#include "./includes/libft.h"
+#include "libft.h"
 
-static	int	get_digits(unsigned long int nbr)
+static int	ft_ternint(int condition, long val1, long val2)
 {
-	int	len;
+	if (condition)
+		return (val1);
+	else
+		return (val2);
+}
 
-	len = 0;
-	if (nbr == 0)
-		return (1);
-	while (nbr != 0)
+static short	ft_is_negative(long n)
+{
+	if (n >= 0)
 	{
-		len += 1;
+		return (0);
+	}
+	else
+		return (1);
+}
+
+static short	ft_digits(long n)
+{
+	short	n_dig;
+
+	if (n == 0)
+		n_dig = 1;
+	else
+		n_dig = 0;
+	while (n != 0)
+	{
+		n_dig++;
+		n /= 10;
+	}
+	return (n_dig);
+}
+
+char	*ft_itoa(int n)
+{
+	char		*nbr_str;
+	short		n_dig;
+	short		neg;
+	long int	nbr;
+
+	nbr = (long int)n;
+	neg = ft_is_negative(nbr);
+	n_dig = ft_digits(nbr) + ft_ternint(neg == 1, 1, 0);
+	nbr_str = (char *)malloc((n_dig + 1) * sizeof(char));
+	if (!nbr_str)
+		return (NULL);
+	nbr_str[0] = '0';
+	nbr_str[n_dig] = 0;
+	if (neg)
+	{
+		nbr_str[0] = '-';
+		nbr = -nbr;
+	}
+	while (nbr && --n_dig >= 0)
+	{
+		nbr_str[n_dig] = (nbr % 10) + '0';
 		nbr /= 10;
 	}
-	return (len);
-}
-
-char	*ft_ul_itoa(unsigned long int nbr, size_t sign)
-{
-	int		len;
-	char	*values;
-
-	len = get_digits(nbr);
-	if (sign)
-		len += 1;
-	values = (char *)malloc((len + 1) * sizeof(char));
-	if (values)
-	{
-		values[0] = '0';
-		values[len] = 0;
-		if (sign)
-			values[0] = '-';
-		while (nbr && len > 0)
-		{
-			len--;
-			values[len] = (nbr % 10) + '0';
-			nbr /= 10;
-		}
-	}
-	return (values);
-}
-
-char	*ft_itoa(long int nbr)
-{
-	int	sign;
-
-	sign = 0;
-	if (nbr < 0)
-	{
-		sign = 1;
-		nbr *= -1;
-	}
-	return (ft_ul_itoa(nbr, sign));
+	return (nbr_str);
 }

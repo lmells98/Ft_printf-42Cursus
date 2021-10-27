@@ -1,5 +1,4 @@
 #include "../includes/ft_printf.h"
-#include "./libft/includes/libft.h"
 
 int	print_char(char c)
 {
@@ -14,20 +13,20 @@ int	print_str(char *str)
 		write(1, "(null)", 6);
 		return (6);
 	}
-	ft_putstr(str);
+	ft_putstr_fd(str, 1);
 	return (ft_strlen(str));
 }
 
-int	print_char_types(char type, va_list *arg_p)
+int	print_char_types(char *type, va_list *arg_p)
 {
 	int	ret;
 
 	ret = 0;
-	if (ft_strchr("sc", type))
+	if (ft_strchr("sc", *type))
 	{
-		if (type == 'c')
+		if (*type == 'c')
 			ret += print_char(va_arg(*arg_p, int));
-		else if (type == 's')
+		else if (*type == 's')
 			ret += print_str(va_arg(*arg_p, char *));
 	}
 	return (ret);

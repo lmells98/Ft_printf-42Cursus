@@ -1,5 +1,4 @@
 #include "../includes/ft_printf.h"
-#include "./libft/includes/libft.h"
 
 static int	get_hex_len(unsigned long long value)
 {
@@ -16,7 +15,7 @@ static int	get_hex_len(unsigned long long value)
 	return (len);
 }
 
-int do_convert(char type, unsigned long int value, unsigned long long power)
+int do_convert(char *type, unsigned long int value, unsigned long long power)
 {
 	char				hex_c;
 	int					ret;
@@ -27,9 +26,9 @@ int do_convert(char type, unsigned long int value, unsigned long long power)
 	while (power > 0)
 	{
 		store = value / power;
-		if (ft_strchr("xp", type))
+		if (ft_strchr("xp", *type))
 			hex_c = "0123456789abcdef"[store];
-		else if (type == 'X')
+		else if (*type == 'X')
 			hex_c = "0123456789ABCDEF"[store];
 		ret += print_char(hex_c);
 		value = value % power;
@@ -38,7 +37,7 @@ int do_convert(char type, unsigned long int value, unsigned long long power)
 	return (ret);
 }
 
-int	convert_hex(char type, unsigned long long value)
+int	convert_hex(char *type, unsigned long long value)
 {
 	int						ret;
 	int						len;
@@ -61,7 +60,7 @@ int	convert_hex(char type, unsigned long long value)
 	return (ret);
 }
 
-int	print_pointer(char type, unsigned long long value)
+int	print_pointer(char *type, unsigned long long value)
 {
 	int	ret;
 
@@ -71,14 +70,14 @@ int	print_pointer(char type, unsigned long long value)
 	return (ret);
 }
 
-int	print_hex_types(char type, va_list *arg_p)
+int	print_hex_types(char *type, va_list *arg_p)
 {
 	int	ret;
 
 	ret = 0;
-	if (ft_strchr("xX", type))
+	if (ft_strchr("xX", *type))
 		ret += convert_hex(type, va_arg(*arg_p, unsigned int));
-	else if (type == 'p')
+	else if (*type == 'p')
 		ret += print_pointer(type, (unsigned long long)va_arg(*arg_p, void *));
 	return (ret);
 }

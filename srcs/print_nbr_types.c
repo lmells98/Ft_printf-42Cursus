@@ -1,5 +1,4 @@
 #include "../includes/ft_printf.h"
-#include "./libft/includes/libft.h"
 
 static int	print_number(unsigned long int nbr)
 {
@@ -21,14 +20,14 @@ static int	print_number(unsigned long int nbr)
 	return (ret);
 }
 
-int	print_nbr_types(char type, va_list *arg_p)
+int	print_nbr_types(char *type, va_list *arg_p)
 {
 	int	ret;
 
 	ret = 0;
-	if (ft_strchr("di", type))
+	if (ft_strchr("di", *type))
 		ret += print_number(va_arg(*arg_p, int));
-	else if (type == 'u')
+	else if (*type == 'u')
 		ret += print_number(va_arg(*arg_p, unsigned int));
 	return (ret);
 }

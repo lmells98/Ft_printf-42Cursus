@@ -1,29 +1,26 @@
 #include "./includes/ft_printf.h"
-#include "./srcs/libft/includes/libft.h"
 
-int	verify_type(const char **format)
+char	*verify_type(const char **format)
 {
 	char	ch_p;
-	int		type;
 
 	(*format)++;
 	ch_p = (char)**format;
-	type = ft_strchr("csdiupxX%", ch_p);
-	return (type);
+	return (ft_strchr("csdiupxX%", ch_p));
 }
 
-int	convert_type(const char **format, char type, va_list *arg_p)
+int	convert_type(const char **format, char *type, va_list *arg_p)
 {
 	int	ret;
 
 	ret = 0;
-	if (ft_strchr("sc", type))
+	if (ft_strchr("sc", *type))
 		ret += print_char_types(type, arg_p);
-	else if (ft_strchr("diu", type))
+	else if (ft_strchr("diu", *type))
 		ret += print_nbr_types(type, arg_p);
-	else if (ft_strchr("pxX", type))
+	else if (ft_strchr("pxX", *type))
 		ret += print_hex_types(type, arg_p);
-	else if (type == '%')
+	else if (*type == '%')
 		ret += print_percent(type);
 	(*format)++;
 	return (ret);
@@ -32,7 +29,7 @@ int	convert_type(const char **format, char type, va_list *arg_p)
 int	ft_printf(const char *format, ...)
 {
 	int		len;
-	char	type;
+	char	*type;
 	va_list	arg_p;
 
 	len = 0;
